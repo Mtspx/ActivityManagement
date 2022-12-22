@@ -7,9 +7,9 @@ namespace ActivityManagement.Models
 {
     public class Obra
     {
-        public Obra(int obraId, DateTime inicio, DateTime previsao, DateTime termino, string responsavelGeral, string chefeDaObra, string status, string uF, string municipio)
+        public Obra(int id, DateTime inicio, DateTime previsao, DateTime termino, string responsavelGeral, string chefeDaObra, string status, string uF, string municipio)
         {
-            ObraId = obraId;
+            Id = id;
             Inicio = inicio;
             Previsao = previsao;
             Termino = termino;
@@ -20,7 +20,7 @@ namespace ActivityManagement.Models
             Municipio = municipio;
         }
 
-        public int ObraId { get; set; }
+        public int Id { get; set; }
         public DateTime Inicio { get; set; }
         public DateTime Previsao { get; set; }
         public DateTime Termino { get; set; }
