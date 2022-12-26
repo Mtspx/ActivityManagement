@@ -7,19 +7,6 @@ namespace ActivityManagement.Models
 {
     public class Obra
     {
-        public Obra(int id, DateTime inicio, DateTime previsao, DateTime termino, string responsavelGeral, string chefeDaObra, string status, string uF, string municipio)
-        {
-            Id = id;
-            Inicio = inicio;
-            Previsao = previsao;
-            Termino = termino;
-            ResponsavelGeral = responsavelGeral;
-            ChefeDaObra = chefeDaObra;
-            Status = status;
-            UF = uF;
-            Municipio = municipio;
-        }
-
         public int Id { get; set; }
         public DateTime Inicio { get; set; }
         public DateTime Previsao { get; set; }
