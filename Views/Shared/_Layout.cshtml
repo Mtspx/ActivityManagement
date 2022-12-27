@@ -27,14 +27,13 @@
                     </li>
 
                     <li class="sidebar-item active">
-                        <a class="sidebar-link" href="index.html">
-                            <i class="align-middle" data-feather="sliders"></i> <span
-                                class="align-middle">Painel</span>
+                        <a class="sidebar-link" asp-controller="Home" asp-action="Index" >
+                            <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Painel</span>
                         </a>
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" asp-action="Projects">
+                        <a class="sidebar-link" asp-controller="Obra" asp-action="Index">
                             <i class="align-middle" data-feather="user"></i> <span class="align-middle">Projetos</span>
                         </a>
                     </li>
@@ -76,6 +75,9 @@
         <script src="~/js/app.js.map"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
         @await RenderSectionAsync("Scripts", required: false)
 </body>
 

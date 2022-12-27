@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ActivityManagement.Models;
+using ActivityManagement.Services;
 
 namespace ActivityManagement.Controllers
 {
@@ -21,9 +22,13 @@ namespace ActivityManagement.Controllers
         // GET: Obra
         public async Task<IActionResult> Index()
         {
-              return _context.Obra != null ? 
-                          View(await _context.Obra.ToListAsync()) :
-                          Problem("Entity set 'AmDbContext.Obra'  is null.");
+
+            var resultSet = _context.VwProjetos.FromSqlRaw("SELECT * FROM VW_PAINEL_PROJETOS").ToList();
+            ViewBag.oPainelProjetos = resultSet;
+
+            return _context.Obra != null ?
+                        View(await _context.Obra.ToListAsync()) :
+                        Problem("Entity set 'AmDbContext.Obra'  is null.");
         }
 
         // GET: Obra/Details/5
@@ -55,15 +60,11 @@ namespace ActivityManagement.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Inicio,Previsao,Termino,ResponsavelGeral,ChefeDaObra,Status,UF,Municipio")] Obra obra)
+        public async Task<IActionResult> Create([Bind("Id,Inicio,Previsao,Termino,IdentificacaoDoProjeto,ChefeDaObra,Status,UF,Municipio")] Obra obra)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(obra);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(obra);
+            _context.Add(obra);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Obra/Edit/5
@@ -149,14 +150,14 @@ namespace ActivityManagement.Controllers
             {
                 _context.Obra.Remove(obra);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ObraExists(int id)
         {
-          return (_context.Obra?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Obra?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

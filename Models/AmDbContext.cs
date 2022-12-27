@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ActivityManagement.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace ActivityManagement.Models
@@ -15,5 +16,7 @@ namespace ActivityManagement.Models
         public DbSet<Obra> Obra { get; set; }
 
         public DbSet<Usuario> Usuario { get; set; }
+
+        public DbSet<ViewPainelProjetos> VwProjetos { get; set; }
     }
 }
